@@ -65,7 +65,7 @@ p.mb-1 {
     font-size: 80%
 }
 
-.form-control:focus+.form-control-placeholder {
+.form-control.valid+.form-control-placeholder, .form-control:focus+.form-control-placeholder {
     font-size: 80%;
     transform: translate3d(0, -90%, 0);
     opacity: 1;
