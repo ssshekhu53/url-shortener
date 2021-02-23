@@ -73,6 +73,10 @@ p.mb-1 {
     color: #8B92AC
 }
 
+label.error {
+    color: crimson;
+}
+
 .btn-block {
     border: none;
     border-radius: 8px;
