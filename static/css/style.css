@@ -1,9 +1,9 @@
 body {
-    background-color: #EBEAEF
+    background-color: #EBEAEF;
 }
 
 .container {
-    flex-wrap: wrap
+    flex-wrap: wrap;
 }
 
 .card {
@@ -95,4 +95,16 @@ label.error {
 
 .h-100vh {
     height: 100vh !important;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 15px 25px;
+    background: #FFFFFF;
+}
+
+.footer a {
+    text-decoration: none;
 }
