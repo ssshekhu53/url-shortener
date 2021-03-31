@@ -35,7 +35,10 @@ $('#short-form').validate({
                $(form).find('button:not(#copy-btn)').text('Make TinyURL!');
                $(form).find('button:not(#copy-btn)').attr('disabled', false);
                $('#copy-btn').show();
-           }
+           },
+            error: function (jqXhr, jqStatus, jqText) {
+               alert('Cannot shorten this url. Possible cause of this is that urls of this particular domain cannot be shortened by our service.')
+            }
         });
     }
 });
