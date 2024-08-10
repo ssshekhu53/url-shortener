@@ -3,10 +3,10 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 
-	"url-shortener/handler"
-	"url-shortener/service"
-	"url-shortener/store"
-	"url-shortener/utils"
+	"github.com/ssshekhu53/url-shortener/handler"
+	"github.com/ssshekhu53/url-shortener/service"
+	"github.com/ssshekhu53/url-shortener/store"
+	"github.com/ssshekhu53/url-shortener/utils"
 )
 
 func main() {

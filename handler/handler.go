@@ -6,8 +6,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"url-shortener/models"
-	"url-shortener/service"
+	"github.com/ssshekhu53/url-shortener/models"
+	"github.com/ssshekhu53/url-shortener/service"
 )
 
 type URL interface {

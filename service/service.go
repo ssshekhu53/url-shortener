@@ -4,9 +4,9 @@ import (
 	"errors"
 	"math/rand"
 
-	"url-shortener/models"
-	"url-shortener/store"
-	"url-shortener/utils"
+	"github.com/ssshekhu53/url-shortener/models"
+	"github.com/ssshekhu53/url-shortener/store"
+	"github.com/ssshekhu53/url-shortener/utils"
 )
 
 const (

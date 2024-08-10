@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"url-shortener/models"
+	"github.com/ssshekhu53/url-shortener/models"
 )
 
 type URL interface {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"url-shortener/models"
+	"github.com/ssshekhu53/url-shortener/models"
 )
 
 func HasExpired(analytics *models.Analytics) (bool, error) {
