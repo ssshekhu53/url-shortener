@@ -140,7 +140,7 @@ func (u *url) Delete(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, "Successfully deleted")
+	c.JSON(http.StatusNoContent, "")
 }
 
 func (u *url) errorRespons(c *gin.Context, err error) {
