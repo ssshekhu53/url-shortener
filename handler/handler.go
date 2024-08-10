@@ -151,6 +151,8 @@ func (u *url) errorRespons(c *gin.Context, err error) {
 		statusCode = http.StatusNotFound
 	} else if strings.Contains(errorMessage, "invalid request") || strings.Contains(errorMessage, "missing") {
 		statusCode = http.StatusBadRequest
+	} else if strings.Contains(errorMessage, "already exists") {
+		statusCode = http.StatusConflict
 	} else {
 		statusCode = http.StatusInternalServerError
 	}
