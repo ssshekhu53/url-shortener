@@ -14,14 +14,15 @@ A simple url shortener server developed on Golang using [Gin](https://gin-gonic.
   ```
 
 ### Endpoints
+API documentation can be found in [openapi.yaml](https://github.com/ssshekhu53/url-shortener/blob/main/openapi.yaml)
 
 - POST `/shorten`: Create a short url for the given long url.
   - Sample Payload:
     ```json
     {
         "long_url": "https://www.example.com/some/very/long/url",
-        "custom_alias": "myalias",  // optional
-        "ttl_seconds": 300 //optional
+        "custom_alias": "myalias",  
+        "ttl_seconds": 300 
     }
     ```
   - Sample Response:
@@ -69,8 +70,8 @@ A simple url shortener server developed on Golang using [Gin](https://gin-gonic.
   - Sample Payload: 
     ```json
     {
-      "custom_alias": "newalias", // optional
-      "ttl_seconds": 90 // optional
+      "custom_alias": "newalias", 
+      "ttl_seconds": 90 
     }
      ```
   - Sample Response:
@@ -91,4 +92,4 @@ A simple url shortener server developed on Golang using [Gin](https://gin-gonic.
       "alias does not exist or has expired"
       ```
 
-If the alias is not deleted manually then will automatically get deleted automatically after TTLS has expired.
+If the alias is not deleted manually then will automatically get deleted automatically after TTLS has expired. 
