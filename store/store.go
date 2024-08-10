@@ -101,11 +101,20 @@ func (u *url) UpdateAccessAnalytics(alias string) {
 	analytics := value.(models.Analytics)
 
 	analytics.AccessCount += 1
-	analytics.AccessTimes = append(analytics.AccessTimes, time.Now().UTC().String())
+
+	u.updateAccessTimes(&analytics, time.Now().UTC().String())
 
 	u.analytics.Store(alias, analytics)
 }
 
 func (u *url) Delete(alias string) {
 	u.analytics.Delete(alias)
+}
+
+func (u *url) updateAccessTimes(analytics *models.Analytics, accessTime string) {
+	if len(analytics.AccessTimes) == 10 {
+		analytics.AccessTimes = analytics.AccessTimes[0:9]
+	}
+
+	analytics.AccessTimes = append([]string{accessTime}, analytics.AccessTimes...)
 }
