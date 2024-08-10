@@ -1,0 +1,169 @@
+openapi: 3.0.0
+info:
+  title: URL Shortener API
+  description: A simple URL shortener service developed in Go using Gin, with in-memory data storage.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local server
+paths:
+  /shorten:
+    post:
+      summary: Create a short URL for the given long URL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                long_url:
+                  type: string
+                  format: uri
+                  example: https://www.example.com/some/very/long/url
+                custom_alias:
+                  type: string
+                  example: myalias
+                ttl_seconds:
+                  type: integer
+                  example: 300
+              required:
+                - long_url
+      responses:
+        '201':
+          description: Successfully created a short URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  short_url:
+                    type: string
+                    example: myalias
+        '409':
+          description: Alias already exists
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "alias already exists"
+  /{alias}:
+    get:
+      summary: Redirect to the long URL for the given alias
+      parameters:
+        - in: path
+          name: alias
+          required: true
+          schema:
+            type: string
+            example: myalias
+      responses:
+        '307':
+          description: Redirects to the long URL
+        '404':
+          description: Alias does not exist or has expired
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "alias does not exist or has expired"
+    put:
+      summary: Update the long URL and TTL of the given alias
+      parameters:
+        - in: path
+          name: alias
+          required: true
+          schema:
+            type: string
+            example: myalias
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                custom_alias:
+                  type: string
+                  example: newalias
+                ttl_seconds:
+                  type: integer
+                  example: 90
+      responses:
+        '200':
+          description: Successfully updated
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Successfully updated"
+        '404':
+          description: Alias does not exist or has expired
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "alias does not exist or has expired"
+    delete:
+      summary: Delete the given alias
+      parameters:
+        - in: path
+          name: alias
+          required: true
+          schema:
+            type: string
+            example: myalias
+      responses:
+        '204':
+          description: Successfully deleted
+        '404':
+          description: Alias does not exist or has expired
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "alias does not exist or has expired"
+  /analytics/{alias}:
+    get:
+      summary: Returns the analytics of the alias
+      parameters:
+        - in: path
+          name: alias
+          required: true
+          schema:
+            type: string
+            example: myalias
+      responses:
+        '200':
+          description: Successfully retrieved analytics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  alias:
+                    type: string
+                    example: myalias
+                  long_url:
+                    type: string
+                    format: uri
+                    example: https://www.example.com/some/very/long/url
+                  ttl_seconds:
+                    type: integer
+                    example: 300
+                  access_count:
+                    type: integer
+                    example: 1
+                  access_times:
+                    type: array
+                    items:
+                      type: string
+                      format: date-time
+                      example: "2024-08-10T16:39:54Z"
+        '404':
+          description: Alias does not exist or has expired
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "alias does not exist or has expired"
